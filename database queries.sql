@@ -1,3 +1,22 @@
+Товар с наивысшей оценкой пользователей:
+----------------------------------------------------
+SELECT
+    products.product_id,
+    products.product_name,
+    reviews.review
+FROM
+    reviews
+LEFT OUTER JOIN products ON(
+        products.product_id = reviews.product_id
+    )
+WHERE
+    reviews.review =(
+    SELECT
+        MAX(reviews.review)
+    FROM
+        reviews
+)
+----------------------------------------------------
 Вывод оценок пользователей:
 ----------------------------------------------------
 SELECT
